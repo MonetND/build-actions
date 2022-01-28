@@ -12,9 +12,9 @@
 cat >$NETIP <<-EOF
 uci set network.lan.ipaddr='192.168.2.1'                                    # IPv4 地址(openwrt后台地址)
 uci set network.lan.netmask='255.255.255.0'                                 # IPv4 子网掩码
-#uci set network.lan.gateway='192.168.2.3'                                  # IPv4 网关
+#uci set network.lan.gateway='192.168.2.1'                                  # IPv4 网关
 #uci set network.lan.broadcast='192.168.2.255'                              # IPv4 广播
-#uci set network.lan.dns='223.5.5.5 114.114.114.114'                        # DNS(多个DNS要用空格分开)
+uci set network.lan.dns='114.114.114.114 8.8.8.8'                           # DNS(多个DNS要用空格分开)
 #uci set network.lan.delegate='0'                                           # 去掉LAN口使用内置的 IPv6 管理
 uci commit network                                                          # 不要删除跟注释,除非上面全部删除或注释掉了
 #uci set dhcp.lan.ignore='1'                                                # 关闭DHCP功能（去掉uci前面的#生效）
@@ -23,7 +23,7 @@ uci set system.@system[0].hostname='OpenWrt-B70'                            # �
 sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd              # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效（去掉uci前面的#生效）
 EOF
 
-sed -i "s/OpenWrt /莫奈和 compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" $ZZZ           # 增加个性名字 ${Author} 默认为你的github帐号
+sed -i "s/OpenWrt /${Author} compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" $ZZZ           # 增加个性名字 ${Author} 默认为你的github帐号
 
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                                             # 设置密码为空
 
@@ -32,12 +32,14 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                          
 # K3专用，编译K3的时候只会出K3固件（去掉sed前面的#生效）
 #sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm_k3|TARGET_DEVICES += phicomm_k3|' target/linux/bcm53xx/image/Makefile
 
-#添加argon-config 使用 最新argon
-rm -rf feeds/luci/applications/luci-app-argon-config
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-rm -rf package/lean/luci-theme-argon/
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+git clone https://github.com/vernesong/OpenClash package/molun/luci-app-openclash
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+rm -rf ../lean/luci-theme-argon
+# luci-theme-infinityfreedom
+git clone  https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom
 
 # 在线更新时，删除不想保留固件的某个文件，在EOF跟EOF之间加入删除代码，记住这里对应的是固件的文件路径，比如： rm /etc/config/luci
 cat >$DELETE <<-EOF
@@ -60,11 +62,11 @@ sed -i 's/"Argon 主题设置"/"Argon设置"/g' `grep "Argon 主题设置" -rl .
 
 # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间
 cat >${GITHUB_WORKSPACE}/Clear <<-EOF
-rm -rf config.buildinfo
+#rm -rf config.buildinfo
 rm -rf feeds.buildinfo
-rm -rf openwrt-ramips-mt7621-hiwifi_hc5962-initramfs-kernel.bin
-rm -rf openwrt-ramips-mt7621-hiwifi_hc5962.manifest
-rm -rf openwrt-ramips-mt7621-hiwifi_hc5962-squashfs-sysupgrade.bin
-rm -rf sha256sums
+rm -rf openwrt-x86-64-generic-kernel.bin
+rm -rf openwrt-x86-64-generic.manifest
+rm -rf openwrt-x86-64-generic-squashfs-rootfs.img.gz
+#rm -rf sha256sums
 rm -rf version.buildinfo
 EOF
