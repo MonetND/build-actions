@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -u /etc/openclash/backup/可乐云.yaml /etc/openclash/proxy_provider
+cp -p /etc/openclash/config/* /etc/openclash/proxy_provider
