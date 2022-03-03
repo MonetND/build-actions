@@ -1,4 +1,9 @@
 payload:
-  - DOMAIN-KEYWORD,googleapis
+	- DOMAIN-SUFFIX,xn--9kr7l.com
+  - DOMAIN-SUFFIX,xn--9trs65b.com
+  - DOMAIN-SUFFIX,xn--flw351e.com
+  - DOMAIN-SUFFIX,xn--ggle-55da.com
+  - DOMAIN-SUFFIX,xn--gogl-0nd52e.com
+  - DOMAIN-SUFFIX,xn--gogl-1nd42e.com
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-  - DOMAIN,connectivitycheck.gstatic.com
+  - DOMAIN-SUFFIX,xn--p8j9a0d9c9a.xn--q9jyb4c
