@@ -39,7 +39,8 @@ sed -i "s/bootstrap/argon/ig" feeds/luci/collections/luci/Makefile
 #sed -i "/exit 0/i\uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit luci" "${FIN_PATH}"
 
 rm -rf feeds/luci/applications/luci-app-argon-config
-
+rm -rf feeds/luci/applications/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
