@@ -38,11 +38,9 @@ sed -i "s/bootstrap/argon/ig" feeds/luci/collections/luci/Makefile
 # 编译多主题时,设置固件默认主题（可自行修改您要的,主题名称必须对,比如下面代码的[argon],和肯定编译了该主题,要不然进不了后台）
 #sed -i "/exit 0/i\uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit luci" "${FIN_PATH}"
 
-rm -rf feeds/luci/applications/luci-app-argon-config
-rm -rf feeds/luci/applications/luci-app-netdata
+#rm -rf feeds/luci/applications/luci-app-argon-config
+#rm -rf feeds/luci/applications/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
-#rm -rf feeds/luci/themes/luci-theme-argon
-
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 rm -rf package/lean/luci-theme-argon/
