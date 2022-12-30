@@ -40,12 +40,12 @@ sed -i "s/bootstrap/argon/ig" feeds/luci/collections/luci/Makefile
 
 #rm -rf feeds/luci/applications/luci-app-argon-config
 #rm -rf feeds/luci/applications/luci-app-netdata
-git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
-git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+#git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+#git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
-rm -rf package/lean/luci-theme-argon/
+#rm -rf package/lean/luci-theme-argon/
 
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 
 # 增加个性名字 ${Author} 默认为你的github帐号,修改时候把 ${Author} 替换成你要的
 sed -i "s/OpenWrt /${Author} compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" "${ZZZ_PATH}"
