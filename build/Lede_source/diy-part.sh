@@ -41,7 +41,7 @@ sed -i "s/bootstrap/argon/ig" feeds/luci/collections/luci/Makefile
 rm -rf feeds/luci/applications/luci-app-argon-config
 rm -rf feeds/luci/applications/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
-rm -rf feeds/luci/themes/luci-theme-argon
+#rm -rf feeds/luci/themes/luci-theme-argon
 
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
