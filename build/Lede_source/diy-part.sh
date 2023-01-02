@@ -96,7 +96,7 @@ sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间（根据编译机型变化,自行调整需要删除的固件名称）
 cat >"$CLEAR_PATH" <<-EOF
 # packages
-config.buildinfo
+# config.buildinfo
 feeds.buildinfo
 openwrt-x86-64-generic-kernel.bin
 openwrt-x86-64-generic.manifest
