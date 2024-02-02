@@ -58,6 +58,16 @@ export Automatic_Mount_Settings="0"          # 编译时加入开启NTFS格式�
 # 去除网络共享(autosamba)
 export Disable_autosamba="1"                 # 去掉源码默认自选的luci-app-samba或luci-app-samba4(1为启用命令,填0为不作修改)
 
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/langge1/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-gowebdav
+rm -rf feeds/langge1/luci-app-gowebdav
+#rm -rf feeds/langge1/relevance/gowebdav
+#svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
+#svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
+#git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
+
 # 其他
 export Ttyd_account_free_login="1"           # 设置ttyd免密登录(1为启用命令,填0为不作修改)
 export Delete_unnecessary_items="0"          # 个别机型内一堆其他机型固件,删除其他机型的,只保留当前主机型固件(1为启用命令,填0为不作修改)
