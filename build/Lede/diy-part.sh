@@ -59,11 +59,11 @@ export Automatic_Mount_Settings="0"          # 编译时加入开启NTFS格式�
 export Disable_autosamba="1"                 # 去掉源码默认自选的luci-app-samba或luci-app-samba4(1为启用命令,填0为不作修改)
 
 rm -rf feeds/luci/applications/luci-app-netdata
-rm -rf feeds/langge1/luci-app-netdata
+rm -rf feeds/danshui1/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-gowebdav
-rm -rf feeds/langge1/luci-app-gowebdav
-#rm -rf feeds/langge1/relevance/gowebdav
+rm -rf feeds/danshui1/luci-app-gowebdav
+#rm -rf feeds/danshui1/relevance/gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
 #git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
