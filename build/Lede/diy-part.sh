@@ -63,7 +63,7 @@ rm -rf feeds/danshui1/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-gowebdav
 rm -rf feeds/danshui1/luci-app-gowebdav
-#rm -rf feeds/danshui1/relevance/gowebdav
+rm -rf feeds/danshui1/relevance/gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
 #git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
@@ -90,7 +90,7 @@ function merge_package() {
         done
         cd "$rootdir"
         }
-        merge_package master https://github.com/sbwml/openwrt_pkgs package/openwrt-packages luci-app-gowebdav
+        merge_package master https://github.com/sbwml/openwrt_pkgs package/openwrt-packages gowebdav luci-app-gowebdav
 
 # 其他
 export Ttyd_account_free_login="1"           # 设置ttyd免密登录(1为启用命令,填0为不作修改)
