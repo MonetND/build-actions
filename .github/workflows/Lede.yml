@@ -23,9 +23,10 @@ on:
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
-        default: 'x86_64'
+        default: 'hc5962'
         type: choice
         options:
+          - 'hc5962'
           - 'aarch64'
           - 'asus_rt-acrh17'
           - 'd-team_newifi-d2'
