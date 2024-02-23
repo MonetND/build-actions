@@ -372,8 +372,6 @@ CONFIG_PACKAGE_luci-app-mwan3helper=y
 CONFIG_PACKAGE_luci-app-netdata=y
 CONFIG_PACKAGE_luci-app-oaf=y
 CONFIG_PACKAGE_luci-app-openclash=y
-CONFIG_PACKAGE_luci-app-openvpn=y
-CONFIG_PACKAGE_luci-app-openvpn-server=y
 # CONFIG_PACKAGE_luci-app-qbittorrent_dynamic is not set
 CONFIG_PACKAGE_luci-app-qbittorrent_static=y
 CONFIG_PACKAGE_luci-app-ramfree=y
@@ -391,7 +389,6 @@ CONFIG_PACKAGE_luci-app-transmission=y
 # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING is not set
 # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_PDNSD is not set
 # CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go is not set
-CONFIG_PACKAGE_luci-app-usb-printer=y
 CONFIG_PACKAGE_luci-app-zerotier=y
 CONFIG_PACKAGE_luci-i18n-adbyby-plus-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
@@ -411,9 +408,6 @@ CONFIG_PACKAGE_luci-i18n-mwan3-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-mwan3helper-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-netdata-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-oaf-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-openvpn-en=y
-CONFIG_PACKAGE_luci-i18n-openvpn-server-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-openvpn-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ramfree-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-rclone-en=y
 CONFIG_PACKAGE_luci-i18n-rclone-zh-cn=y
@@ -422,7 +416,6 @@ CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-transmission-en=y
 CONFIG_PACKAGE_luci-i18n-transmission-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-upnp-en=y
-CONFIG_PACKAGE_luci-i18n-usb-printer-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-zerotier-zh-cn=y
 # CONFIG_PACKAGE_luci-lib-ipkg is not set
 CONFIG_PACKAGE_luci-proto-3g=y
