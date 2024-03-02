@@ -100,10 +100,10 @@ function merge_package() {
 
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
-export amlogic_model="s905d"
+export amlogic_model="s912-phicomm-t1"
 export amlogic_kernel="5.10.01_6.1.01"
 export auto_kernel="true"
-export rootfs_size="2560"
+export rootfs_size="1024"
 export kernel_usage="stable"
 
 
