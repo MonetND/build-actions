@@ -27,12 +27,12 @@ on:
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
-        default: 'x86_64'
+        default: 'phicomm-t1'
         type: choice
         options:
           - '1907-phicomm-k3'
           - 'aarch64'
-          - 'phicomm_k3'
+          - 'phicomm_t1'
           - 'x86_64'
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
