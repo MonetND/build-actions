@@ -45,7 +45,7 @@ on:
           - '2560'
           - '3840'
           - '5120'
-          - '6400'
+          - '1024'
       auto_kernel:
         description: '是否自动检测最新内核'
         required: true
