@@ -96,7 +96,7 @@ function merge_package() {
         done
         cd "$rootdir"
         }
-        merge_package master https://github.com/sbwml/openwrt_pkgs package/openwrt-packages gowebdav luci-app-gowebdav
+        merge_package master https://github.com/sbwml/openwrt_pkgs package/openwrt-packages luci-app-gowebdav
 
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
