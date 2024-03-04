@@ -69,7 +69,7 @@ rm -rf feeds/danshui1/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-gowebdav
 rm -rf feeds/danshui1/luci-app-gowebdav
-rm -rf feeds/danshui1/relevance/gowebdav
+# rm -rf feeds/danshui1/relevance/gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
 #git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
