@@ -16,7 +16,7 @@ on:
       REPO_BRANCH:
         description: '（Lienol源码）请选择源码分支'
         required: true
-        default: '19.07'
+        default: '23.05'
         type: choice
         options:
           - '22.03'
@@ -27,9 +27,10 @@ on:
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
-        default: 'x86_64'
+        default: 'hc5962'
         type: choice
         options:
+          - 'hc5962'
           - 'aarch64'
           - 'x86_64'
       CPU_SELECTION:
