@@ -65,12 +65,14 @@ export Disable_53_redirection="0"            # 删除DNS强制重定向53端口�
 export Cancel_running="0"                    # 取消路由器每天跑分任务(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 
 rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/other/lean/luci-app-netdata
 rm -rf feeds/danshui1/luci-app-netdata
-git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+git clone --depth=1 https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+ln -s package/luci-app-netdata/po/zh-cn package/luci-app-netdata/po/zh_Hans
 rm -rf feeds/luci/applications/luci-app-gowebdav
 rm -rf feeds/danshui1/luci-app-gowebdav
 rm -rf feeds/danshui1/luci-app-serverchan
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+git clone --depth=1 https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #rm -rf feeds/danshui1/relevance/gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
@@ -108,7 +110,8 @@ export auto_kernel="true"
 export rootfs_size="2560"
 export kernel_usage="stable"
 
-
+# samba解除root限制
+sed -i 's/invalid users = root/#&/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # 修改插件名字
 sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
