@@ -8,7 +8,7 @@
 # 后台IP设置
 export Ipv4_ipaddr="192.168.2.1"            # 修改openwrt后台地址(填0为关闭)
 export Netmask_netm="255.255.255.0"         # IPv4 子网掩码（默认：255.255.255.0）(填0为不作修改)
-export Op_name="OpenWrt-B70"                # 修改主机名称为OpenWrt-123(填0为不作修改)
+export Op_name="HiWiFi-B70"                # 修改主机名称为OpenWrt-123(填0为不作修改)
 
 # 内核和系统分区大小(不是每个机型都可用)
 export Kernel_partition_size="0"            # 内核分区大小,每个机型默认值不一样 (填写您想要的数值,默认一般16,数值以MB计算，填0为不作修改),如果你不懂就填0
@@ -59,53 +59,17 @@ export Automatic_Mount_Settings="1"          # 编译时加入开启NTFS格式�
 export Disable_autosamba="0"                 # 去掉源码默认自选的luci-app-samba或luci-app-samba4(1为启用命令,填0为不作修改)
 
 # 其他
-export Ttyd_account_free_login="1"           # 设置ttyd免密登录(1为启用命令,填0为不作修改)
+export Ttyd_account_free_login="0"           # 设置ttyd免密登录(1为启用命令,填0为不作修改)
 export Delete_unnecessary_items="0"          # 个别机型内一堆其他机型固件,删除其他机型的,只保留当前主机型固件(1为启用命令,填0为不作修改)
 export Disable_53_redirection="0"            # 删除DNS强制重定向53端口防火墙规则(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 export Cancel_running="0"                    # 取消路由器每天跑分任务(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 
-rm -rf feeds/luci/applications/luci-app-netdata
-rm -rf feeds/danshui1/luci-app-netdata
-git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
-rm -rf feeds/luci/applications/luci-app-gowebdav
-rm -rf feeds/danshui1/luci-app-gowebdav
-rm -rf feeds/danshui1/luci-app-serverchan
-git clone https://github.com/tty228/luci-app-serverchan.git package/uci-app-serverchan
-# rm -rf feeds/danshui1/relevance/gowebdav
-#svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
-#svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
-#git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
-function merge_package() {
-        # 参数1是分支名,参数2是库地址,参数3是所有文件下载到指定路径。
-        # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
-        if [[ $# -lt 3 ]]; then
-        echo "Syntax error: [$#] [$*]" >&2
-        return 1
-        fi
-        trap 'rm -rf "$tmpdir"' EXIT
-        branch="$1" curl="$2" target_dir="$3" && shift 3
-        rootdir="$PWD"
-        localdir="$target_dir"
-        [ -d "$localdir" ] || mkdir -p "$localdir"
-        tmpdir="$(mktemp -d)" || exit 1
-        git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
-        cd "$tmpdir"
-        git sparse-checkout init --cone
-        git sparse-checkout set "$@"
-        # 使用循环逐个移动文件夹
-        for folder in "$@"; do
-        mv -f "$folder" "$rootdir/$localdir"
-        done
-        cd "$rootdir"
-        }
-        merge_package master https://github.com/sbwml/openwrt_pkgs package/openwrt-packages luci-app-gowebdav
-
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
-export amlogic_model="s912-phicomm-t1"
+export amlogic_model="s905d"
 export amlogic_kernel="5.10.01_6.1.01"
 export auto_kernel="true"
-export rootfs_size="1024"
+export rootfs_size="2560"
 export kernel_usage="stable"
 
 
