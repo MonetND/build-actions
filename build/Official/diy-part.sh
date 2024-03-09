@@ -72,7 +72,8 @@ export auto_kernel="true"
 export rootfs_size="2560"
 export kernel_usage="stable"
 
-
+rm -rf feeds/luci/applications/luci-app-netdata
+git clone --depth=1 https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 
 # 修改插件名字
 sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
