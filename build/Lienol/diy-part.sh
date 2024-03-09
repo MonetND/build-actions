@@ -67,8 +67,8 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/other/lean/luci-app-netdata
 rm -rf feeds/danshui1/luci-app-netdata
+rm -rf feeds/other/lean/luci-app-netdata
 git clone --depth=1 https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
-ln -s package/luci-app-netdata/po/zh-cn package/luci-app-netdata/po/zh_Hans
 rm -rf feeds/luci/applications/luci-app-gowebdav
 rm -rf feeds/danshui1/luci-app-gowebdav
 rm -rf feeds/danshui1/luci-app-serverchan
