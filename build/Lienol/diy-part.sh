@@ -77,6 +77,8 @@ git clone --depth=1 https://github.com/tty228/luci-app-serverchan.git package/lu
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
 #svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
 #git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
+git clone --depth=1 https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
+git clone --depth=1 https://github.com/immortalwrt/homeproxy.git package/homeproxy
 function merge_package() {
         # 参数1是分支名,参数2是库地址,参数3是所有文件下载到指定路径。
         # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
