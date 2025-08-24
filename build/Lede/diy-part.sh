@@ -6,9 +6,9 @@
 
 
 # 后台IP设置
-export Ipv4_ipaddr="192.168.2.2"            # 修改openwrt后台地址(填0为关闭)
+export Ipv4_ipaddr="192.168.2.1"            # 修改openwrt后台地址(填0为关闭)
 export Netmask_netm="255.255.255.0"         # IPv4 子网掩码（默认：255.255.255.0）(填0为不作修改)
-export Op_name="OpenWrt-123"                # 修改主机名称为OpenWrt-123(填0为不作修改)
+export Op_name="OpenWrt-B70"                # 修改主机名称为OpenWrt-123(填0为不作修改)
 
 # 内核和系统分区大小(不是每个机型都可用)
 export Kernel_partition_size="0"            # 内核分区大小,每个机型默认值不一样 (填写您想要的数值,默认一般16,数值以MB计算，填0为不作修改),如果你不懂就填0
@@ -27,14 +27,14 @@ export Disable_Bridge="0"                   # 旁路由去掉桥接模式(1为�
 export Create_Ipv6_Lan="0"                  # 爱快+OP双系统时,爱快接管IPV6,在OP创建IPV6的lan口接收IPV6信息(1为启用命令,填0为不作修改)
 
 # IPV6、IPV4 选择
-export Enable_IPV6_function="0"             # 编译IPV6固件(1为启用命令,填0为不作修改)(如果跟Create_Ipv6_Lan一起启用命令的话,Create_Ipv6_Lan命令会自动关闭)
+export Enable_IPV6_function="1"             # 编译IPV6固件(1为启用命令,填0为不作修改)(如果跟Create_Ipv6_Lan一起启用命令的话,Create_Ipv6_Lan命令会自动关闭)
 export Enable_IPV4_function="0"             # 编译IPV4固件(1为启用命令,填0为不作修改)(如果跟Enable_IPV6_function一起启用命令的话,此命令会自动关闭)
 
 # 替换OpenClash的源码(默认master分支)
-export OpenClash_branch="0"                 # OpenClash的源码分别有【master分支】和【dev分支】(填0为关闭,填1为使用master分支,填2为使用dev分支,填入1或2的时候固件自动增加此插件)
+export OpenClash_branch="1"                 # OpenClash的源码分别有【master分支】和【dev分支】(填0为关闭,填1为使用master分支,填2为使用dev分支,填入1或2的时候固件自动增加此插件)
 
 # 个性签名,默认增加年月日[$(TZ=UTC-8 date "+%Y.%m.%d")]
-export Customized_Information="$(TZ=UTC-8 date "+%Y.%m.%d")"  # 个性签名,你想写啥就写啥，(填0为不作修改)
+export Customized_Information="莫奈何 $(TZ=UTC-8 date "+%Y.%m.%d")"  # 个性签名,你想写啥就写啥，(填0为不作修改)
 
 # 更换固件内核
 export Replace_Kernel="0"                    # 更换内核版本,在对应源码的[target/linux/架构]查看patches-x.x,看看x.x有啥就有啥内核了(填入内核x.x版本号,填0为不作修改)
@@ -65,6 +65,49 @@ export auto_kernel="true"
 export rootfs_size="512/2560"
 export kernel_usage="stable"
 
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/other/lean/luci-app-netdata
+rm -rf feeds/danshui1/luci-app-netdata
+rm -rf feeds/other/lean/luci-app-netdata
+git clone --depth=1 https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-gowebdav
+rm -rf feeds/danshui1/luci-app-gowebdav
+#rm -rf feeds/danshui1/luci-app-serverchan
+#rm -rf package/luci-app-serverchan 
+rm -rf feeds/langge1/relevance/mmdvm-luci
+rm -rf feeds/langge1/relevance/libmmdvm
+rm -rf feeds/langge1/relevance/mmdvm-host compile
+#git clone --depth=1 https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+#rm -rf feeds/danshui1/relevance/gowebdav
+#svn co https://github.com/sbwml/openwrt_pkgs/trunk/luci-app-gowebdav package/luci-app-gowebdav
+#svn co https://github.com/sbwml/openwrt_pkgs/trunk/gowebdav package/gowebdav
+#git clone https://github.com/vernesong/OpenClash.git -b master --single-branch luci-app-openclash
+git clone --depth=1 https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
+#git clone --depth=1 https://github.com/douglarek/luci-app-homeproxy.git package/luci-app-homeproxy
+function merge_package() {
+        # 参数1是分支名,参数2是库地址,参数3是所有文件下载到指定路径。
+        # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
+        if [[ $# -lt 3 ]]; then
+        echo "Syntax error: [$#] [$*]" >&2
+        return 1
+        fi
+        trap 'rm -rf "$tmpdir"' EXIT
+        branch="$1" curl="$2" target_dir="$3" && shift 3
+        rootdir="$PWD"
+        localdir="$target_dir"
+        [ -d "$localdir" ] || mkdir -p "$localdir"
+        tmpdir="$(mktemp -d)" || exit 1
+        git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
+        cd "$tmpdir"
+        git sparse-checkout init --cone
+        git sparse-checkout set "$@"
+        # 使用循环逐个移动文件夹
+        for folder in "$@"; do
+        mv -f "$folder" "$rootdir/$localdir"
+        done
+        cd "$rootdir"
+        }
+        merge_package master https://github.com/sbwml/openwrt_pkgs package/openwrt-packages gowebdav luci-app-gowebdav
 
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
